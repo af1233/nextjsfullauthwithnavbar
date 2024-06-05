@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import connectToDB from "@/app/dbconfig/db";
+ 
 import bcrypt from "bcryptjs";
 import User from "@/models/userModel";
+import connectToDB from "@/utils/db";
 
 
 connectToDB();

@@ -1,8 +1,8 @@
  
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import connectToDB from './app/dbconfig/db';
- 
+import connectToDB from './utils/db';
+
 connectToDB();
 
 export function middleware(request: NextRequest) {
