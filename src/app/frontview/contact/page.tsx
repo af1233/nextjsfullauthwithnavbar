@@ -1,7 +1,7 @@
  
 const ContactUs = () => {
   return (
-    <div>ContactUs</div>
+    <div className="h-dvh flex justify-center items-center">ContactUs</div>
   )
 }
 
