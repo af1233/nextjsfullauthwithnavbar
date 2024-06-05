@@ -4,9 +4,6 @@ import bcrypt from "bcryptjs";
 import User from "@/models/userModel";
 import connectToDB from "@/server/db";
 
-
- 
-
 export async function POST(request:NextRequest) {
     try {
         await connectToDB();
