@@ -2,6 +2,7 @@
 import getdatafromToken from "@/helpers/getdatafromToken";
 import User from "@/models/userModel";
 import connectToDB from "@/server/db";
+ 
 import { NextRequest, NextResponse } from "next/server";
  
 export async function GET(request:NextRequest) {

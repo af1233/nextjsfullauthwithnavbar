@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import connectToDB from './server/db';
-
+ 
 
 
 export async function middleware(request: NextRequest) {
