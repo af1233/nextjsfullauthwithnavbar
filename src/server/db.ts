@@ -1,13 +1,21 @@
 // src/server/db.ts
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const connectToDB = async () => {
+dotenv.config();
+
+const connectToDatabase = async () => {
+  const uri = process.env.MONGO_URL;
+  if (!uri) {
+    throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  }
+
   if (mongoose.connections[0].readyState) {
     // Use existing database connection
     return;
   }
-  // Use a new database connection
-  await mongoose.connect(process.env.MONGODB_URL as string);
+
+  await mongoose.connect(uri);
 };
 
-export default connectToDB;
+export default connectToDatabase;
