@@ -7,7 +7,7 @@ const connectToDB = async () => {
     return;
   }
   // Use a new database connection
-  await mongoose.connect(process.env.MONGODB_URI as string);
+  await mongoose.connect(process.env.MONGODB_URL as string);
 };
 
 export default connectToDB;

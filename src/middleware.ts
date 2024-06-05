@@ -1,12 +1,9 @@
  
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import connectToDB from './server/db';
  
 
-
 export async function middleware(request: NextRequest) {
-  await connectToDB();
   const path = request.nextUrl.pathname;
   const token = request.cookies.get('token')?.value || '';
   const validPath = path === '/frontview/login' || path === '/frontview/signup';
