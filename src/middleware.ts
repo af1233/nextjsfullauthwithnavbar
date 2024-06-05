@@ -16,7 +16,7 @@ export async function middleware(request: NextRequest) {
     if (path === '/frontview/login' || path === '/frontview/signup') {
       // Redirect authenticated users to the home page if they try to access the login or signup pages
       return NextResponse.redirect(new URL('/', request.url));
-    }
+    } 
   }
 
   // Continue with the request if no redirection is needed
