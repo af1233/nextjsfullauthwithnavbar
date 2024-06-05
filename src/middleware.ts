@@ -1,24 +1,22 @@
- 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
- 
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get('token')?.value || '';
-  const validPath = path === '/frontview/login' || path === '/frontview/signup';
 
-  if (validPath && token) {
-    // User is already authenticated, redirect to the home page
-    return NextResponse.redirect(new URL('/', request.url));
-  }
   if (!token) {
-      // User is already authenticated, redirect to the home page
+    // If the user is not authenticated
+    if (path === '/frontview/profile') {
+      // Redirect unauthenticated users to the login page if they try to access the profile page
+      return NextResponse.redirect(new URL('/frontview/login', request.url));
+    }
+  } else {
+    // If the user is authenticated
+    if (path === '/frontview/login' || path === '/frontview/signup') {
+      // Redirect authenticated users to the home page if they try to access the login or signup pages
       return NextResponse.redirect(new URL('/', request.url));
-  }
-  if (!validPath && !token) {
-    // User is not authenticated, redirect to the login page
-    return NextResponse.redirect(new URL('/frontview/login', request.url));
+    }
   }
 
   // Continue with the request if no redirection is needed
@@ -29,5 +27,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/frontview/profile',
+    '/frontview/login',
+    '/frontview/signup',
   ],
 };
